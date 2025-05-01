@@ -1,0 +1,10 @@
+some = 5
+Q =  (  ( loader . sucess . isnt )  * 2 )  . end
+A = 5
+B = 5 + 5
+C =  (  ( 5 * 5 + 5 )  + 5 )  + 5
+D =  (  ( 6 / 6 )  * 6 * 6 ) 
+E = abs ( 5 - 10 )  * 5
+F = cos ( 5 ) 
+G = sin ( 5 ) 
+K =  ( w * 3 )  .  ( chciToUdelat * 5 ) 

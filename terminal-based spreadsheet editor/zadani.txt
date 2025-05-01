@@ -1,0 +1,40 @@
+Zadaní :
+
+Funkcionalita : 
+
+=> Tabulkový editor musí implementovat následující funkcionality:
+
+=> Práce s čísly a řetězci (příp. další typy dle vašeho uvážení).
+
+=> Základní číselné operace: sčítání, odčítání, násobení, dělení.
+
+=> Základní operace nad řetězci: spojení dvou řetězců, opakování řetězce.
+
+=> Alespoň 3 jednoduché funkce (př. sin, abs, pad, regex, …).
+
+=> Vypsat tabulku a její hodnoty a vzorce.
+
+=> Uložení tabulky (tedy jejích buněk) do souboru v čitelné podobě. Stejně tak je potom možné tento stav ze souboru obnovit. (A to včetně definovaných vzorců.)
+
+=> Buňky v sobě mohou mít uloženou hodnotu nebo vzorec, v případě vzorce musí aktualizovat svůj obsah na základě změn v odkazovaných buňkách. Stejně tak program musí detekovat cykly a nesmí dovolit vytvořit výraz, který by cyklus způsobil.
+
+=> Základní operace (alespoň sčítání, odčítání, násobení, dělení, spojení řetězců a opakování řetězce) musí jít vnořovat pomocí závorek (př. ("w" * A3) . ".cvut.cz") závorky mohou být libovolně vnořené.
+
+Navíc :
+	=> Dokáže načítat vnořené soubory, ale nekontroluje, jestli vzniká cyklus
+
+Omezení : 
+	
+	=> Nerozlišuje prioritu operatoru.
+
+	=> V řetězci nesmí být čísla, protože lexikální analyzátor zvlášť rozlišuje čísla a řetězce.
+	
+Polymorfismus :
+Protože se hodlám implementovat ast( abstract syntax tree ), tak má cenu si zvolit jeden abstraktní node. Ten by měl polymorfní metodu evaluate(), print(). Z něho bych dědil node typu operátor ( sčítání, konkatenace, ...). Abstraktní typ, ze kterého by dědili jiné typy. V tomto případě by se jedná o typ CString, který obaluje datový typ std :: string, nebo analogicky o typ CInt. 
+V případě uložení souboru existuje v projektu interface TableSaver. I když daný projekt obsahuje jenom ukládání do souboru, lze to rozšířit i na jiné typy ukládaní. A to tak, že vytvoříme novou classu, která bude dědit z interfasu TableSaver.
+Dale projekt má interface TableLoader, ze kterého dědí FileLoader a ConsoleLoader.
+
+
+
+
+

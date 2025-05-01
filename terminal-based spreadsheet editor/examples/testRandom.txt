@@ -1,0 +1,24 @@
+A = 5
+B = 5 + A
+PrintTable ( )
+
+C = ( ( 5 * B ) + A ) + 5
+print ( C )
+print ( ( C + 1 ) + 1 )
+
+D = ( ( 6 / 6 ) * 6 * 6 )
+print ( D )
+
+E =  abs ( 5 - 10 ) * 5
+print ( E )
+
+F = cos ( 5 )
+print ( F )
+
+G = sin ( 5 )
+print ( G )
+
+K = ( w * 3 ) . ( chciToUdelat * 5 )
+print ( K )
+
+PrintTable ( )

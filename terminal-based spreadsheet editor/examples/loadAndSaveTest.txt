@@ -1,0 +1,3 @@
+load ./examples/loadTestTwo.txt
+printTable()
+save ./examples/resLoadAndSaveTest.txt

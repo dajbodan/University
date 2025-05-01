@@ -1,0 +1,11 @@
+print ( ( a . a . a . a . a . a ) * 2 )
+print ( test * 2 )
+print ( ( test * 3 ) . cz )
+print ( ( some * 1 ) * 1 )
+print ( ( some * ( 1 + 1 ) ) )
+print ( begin . ( end * ( ( 5 / 5 ) + 1 ) ) )
+print ( begin . ( end * 2 ) . cz )
+A = cz
+print ( begin . ( end * 2 ) . A )
+B = 1 + 1
+print ( ( here * ( 1 + B ) ) . A )

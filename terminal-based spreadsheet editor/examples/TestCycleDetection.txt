@@ -1,0 +1,24 @@
+First :
+
+A = A
+
+Second :
+
+A = 5
+B = A
+A = B
+
+Third :
+
+A = 5 + 20
+B = 5 * ( 5 + A )
+C = ( 6 / 6 )  + A + B
+D = abs ( C - A ) * ( 10 / 10 )
+A = D
+
+Fourth :
+
+A = www . progtest . .cz
+B = ( A * 3 ) . end
+C = ( ( B . B ) * 2 ) * 3
+B =  ( ( l * 10 ) . C ) * 2

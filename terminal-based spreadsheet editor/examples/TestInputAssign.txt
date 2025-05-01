@@ -1,0 +1,6 @@
+A = 20
+B = ( ( 10 * 30 )  * 20 ) / A
+C = ( A * B ) + A
+D =  .progtest . .cz
+E =  ( ( w * 3 ) . D ) * 2
+PrintTable ( )

@@ -1,0 +1,8 @@
+A = 5
+B = 10
+C = 15
+print ( A + B )
+print ( B * C )
+print ( ( A + B ) * C )
+PrintTable ( )
+save ./examples/saveInputFile.txt

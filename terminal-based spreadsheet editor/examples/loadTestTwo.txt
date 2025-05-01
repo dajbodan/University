@@ -1,0 +1,3 @@
+Q = ( ( loader . sucess . isnt ) * 2 ) . end
+print ( ( Q . success ) * 2 )
+load ./examples/testRandom.txt
