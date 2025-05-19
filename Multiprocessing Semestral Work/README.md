@@ -1,36 +1,3 @@
-### Code Structure:
-
-```text
-.
-├── common.h
-├── Makefile
-├── progtest_solver.h
-├── README.md
-├── sample_tester.cpp
-├── sample_tester.h
-├── solution.cpp
-└── src
-    ├── CompanyAgent.cpp
-    ├── CompanyAgent.hpp
-    ├── COptimizer.cpp
-    ├── COptimizer.hpp
-    ├── Deliverer.cpp
-    ├── Deliverer.hpp
-    ├── Loader.cpp
-    ├── Loader.hpp
-    ├── ProblemPackWrapper.cpp
-    ├── ProblemPackWrapper.hpp
-    ├── SolverManager.cpp
-    ├── SolverManager.hpp
-    ├── Worker.cpp
-    ├── Worker.hpp
-    ├── WorkerStation.cpp
-    └── WorkerStation.hpp
-
-1 directory, 23 files
-```
-
-
 # Tool Rental
 
 The task is to implement a set of classes that will optimize the profit of rental companies.
