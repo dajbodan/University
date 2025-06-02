@@ -24,24 +24,7 @@ huffman_code_entropy/
 
 ---
 
-## 1 Quick Start
-
-```bash
-# (1) create & activate a fresh env (recommended)
-python -m venv .venv && source .venv/bin/activate
-
-# (2) install required packages
-pip install jupyter pandas matplotlib
-
-# (3) open the notebook
-jupyter lab huffman_code_entropy.ipynb
-```
-
-Run **all cells** – execution takes \< 1 s.
-
----
-
-## 2 What the Notebook Does
+## 1 What the Notebook Does
 
 | Section | Code highlights | Outputs |
 |---------|-----------------|---------|
@@ -54,7 +37,7 @@ Run **all cells** – execution takes \< 1 s.
 
 ---
 
-## 3 Why the Code C is Optimal
+## 2 Why the Code C is Optimal
 
 The Huffman algorithm constructs a **prefix‑free (instantaneous) code**
 whose average length 𝐿 satisfies  
@@ -74,7 +57,7 @@ the second distribution; hence C is **not** optimal there.
 
 ---
 
-## 4 License & Credits
+## 3 License & Credits
 
 Released under the **MIT License** – feel free to use, modify and
 redistribute.  If you publish derived work, please cite this repo.
