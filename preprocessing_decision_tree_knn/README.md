@@ -15,8 +15,8 @@ Both models share a **scikit‑learn `Pipeline`** that
 
 | Pipeline |
 |---------------------:|
-| **Decision Tree** (max_depth = 7) | **0.875** |
-| **k‑NN** (k = 9, distance = Euclidean) | 0.862 |
+| **Decision Tree** |
+| **k‑NN** |
 
 
 ---
