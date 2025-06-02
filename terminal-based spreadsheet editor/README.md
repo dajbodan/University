@@ -1,126 +1,128 @@
 # Terminal‑Based Spreadsheet Editor  
-*(folder `terminal_spreadsheet/`)*
+*(folder `terminal-based spreadsheet editor/` in the repo)*
 
-> **Assignment summary (see `Zadani.txt`)**  
-> Implement a **CLI spreadsheet** that runs entirely in a Unix terminal
-> (no GUI) and supports interactive editing, basic formulas, cell
-> navigation and CSV import/export.
+A full‑screen **command‑line spreadsheet** written in modern **C++17**
+that fulfils the specification in **`zadani.txt`**.
 
-The project is written in **Python 3** using the `curses` library for
-full‑screen text UI.  It aims to reproduce a small subset of the
-functionality of classic tools like *VisiData* or the *Vim* plugin
-*vim‑spreadsheet*, but with a clean codebase and zero external
-dependencies.
+The program lets you edit a table interactively, write formulas,
+evaluate numeric / string expressions, apply simple functions
+(`sin`, `cos`, `abs`, *etc.*), **save / load** sheets and detect cycles
+between cell references — all directly in a Unix terminal, no GUI
+required.
 
 ---
 
-## 1 Features
+## 1 Key Features (required by _zadani.txt_)
 
-| Category       | Details |
-|----------------|---------|
-| **Navigation** | Arrow keys or `h j k l` (Vim‑style) to move the cursor.  `Home`, `End`, `PgUp`, `PgDn` to jump. |
-| **Editing**    | Press **`e`** to edit a cell; accepts plain text or a formula starting with `=`.  Press **`u`** to undo the last change. |
-| **Formulas**   | Support for `+ − * /`, parentheses and cell references (`A1`, `B2`, …).  Re‑evaluation is automatic on dependencies change. |
-| **File I/O**   | **`o`** – open a CSV file. **`s`** – save current sheet to CSV (overwrites or asks for path). |
-| **Sheets**     | Multiple tabs: **`gt`** / **`gT`** cycle forward/backward. |
-| **Status bar** | Shows coordinates, current value, mode (INSERT/NORMAL), file name and dirty flag. |
-| **Help**       | **`?`** or **`F1`** pops a cheat‑sheet of all key bindings. |
+| Category       | Implemented Details |
+|----------------|---------------------|
+| **Data types** | Numbers (signed / floating), character strings |
+| **Arithmetic** | `+ − * /` with parentheses, left‑to‑right evaluation |
+| **String ops** | Concatenation with `.` & repetition with `*` |
+| **Built‑ins**  | `sin(x)`, `cos(x)`, `abs(x)` *(add more easily via* **`src/…Function.hpp`** *templates)* |
+| **Persistence**| `save  path/to/file.txt` & `load  path/to/file.txt` |
+| **Printing**   | `print ( expression )` ‑‑ prints value only<br>`PrintTable()` ‑‑ dumps all cells as `A1 = …` & their formulas |
+| **Cycle guard**| The AST checks for cyclic dependencies and cancels the statement with an error |
+| **Undo safety**| If a statement fails (lex/parser error or cycle) the sheet is left unchanged |
 
-*(Everything above is required by the assignment; see § 2 of Zadani.txt)*
+All functionality is available through **single‑line commands** typed
+into the running program.
 
 ---
 
-## 2 Repository Layout
+## 2 Repository Layout
 
 ```
-terminal_spreadsheet/
-├── spreadsheet.py           ← main curses application
-├── formulas.py              ← recursive‑descent expression parser & evaluator
-├── io_csv.py                ← load/save helpers
-├── state.py                 ← undo stack & dirty‑flag tracking
-├── demo.csv                 ← tiny sample sheet
-└── README.md                ← you are here
+terminal-based spreadsheet editor/
+├── Makefile                    ← one‑command build
+├── zadani.txt                  ← Czech assignment text
+├── examples/                   ← ready‑made demo sheets & scripts
+├── src/                        ← ~35 C++17 implementation files
+│   ├── main.cpp                ← entry point (creates Controller)
+│   ├── Controller.*            ← REPL loop & I/O loaders
+│   ├── (lexer / parser / AST / Function classes …)
+└── README.md                   ← you are here
 ```
 
 ---
 
-## 3 Installation
+## 3 Build & Run
+
+You only need **`g++ 11+`** and `make`.
 
 ```bash
-git clone https://github.com/your‑user/terminal_spreadsheet.git
-cd terminal_spreadsheet
-
-python -m venv .venv
-source .venv/bin/activate
-
-pip install -r requirements.txt   # just tabulate for CSV pretty‑print
+cd "terminal-based spreadsheet editor"
+make            # builds build/*.o and final binary `dajbodan`
+./dajbodan      # start the interactive REPL
 ```
 
-> **Note:** On macOS you may need  
-> `export TERM=xterm‑256color`  
-> before running, otherwise `curses` uses limited colours.
+The program prints:
 
----
+```
+Begin
+>                # ← cursor waits for a command
+```
 
-## 4 Usage
+Type commands, one per line; hit **`Ctrl‑D`** (EOF) to quit.
+
+Clean, rebuild & docs:
 
 ```bash
-python spreadsheet.py [path/to/file.csv]
-```
-
-Key bindings (default Vim‑like *NORMAL* mode):
-
-| Key | Action |
-|-----|--------|
-| `h j k l` / arrows | Move left / down / up / right |
-| `e` | Edit cell (enters *INSERT* mode) |
-| `Esc` | Leave *INSERT* mode |
-| `s` | Save (`write.csv` if no file yet) |
-| `o` | Open CSV |
-| `u` | Undo |
-| `Ctrl‑r` | Redo |
-| `?` | Toggle help panel |
-| `q` | Quit (asks to save if sheet is dirty) |
-
-Formulas begin with `=` and can reference cells:
-
-```
-=C1 + D1 * 2
-=SUM(A1:A10)
-```
-
-The grammar is roughly:
-
-```
-expr  → term ((+ | −) term)*
-term  → factor ((* | /) factor)*
-factor→ number | cell | (expr)
+make clean      # object files + binary
+make doc        # generates HTML via Doxygen
 ```
 
 ---
 
-## 5 Testing
+## 4 Quick Demo
 
-A minimal unit test suite lives in **`tests/`** (run via `pytest`).  
-It checks:
+```text
+# numbers
+A1 = 5
+B1 = 10
+print ( A1 + B1 )          # → 15
 
-* correct tokenisation & parsing of formulas  
-* cycle‑detection in dependency graphs  
-* undo/redo integrity
+# strings
+C1 = "cvut"
+D1 = C1 . ".cz"            # string concat => "cvut.cz"
+E1 = "-" * 5               # repetition    => "-----"
 
-Run:
+# functions
+F1 = sin ( 1.57 )
+G1 = abs ( -42 )
 
-```bash
-pip install pytest
-pytest
+# formula referencing another cell
+H1 = ( A1 + B1 ) * 3
+
+PrintTable ( )             # pretty dump of every cell
+save ./examples/mySheet.txt
+load ./examples/resLoadAndSaveTest.txt
 ```
 
-All tests should pass.
+If you attempt something like
+
+```
+A1 = B1 + 1
+B1 = A1 + 1
+```
+
+you’ll get **“Cycle detected. Statement is cancelled.”**
 
 ---
 
-## 6 License
+## 5 Extending the Spreadsheet
 
-Released under the **MIT License**.  
-© 2024 *<your‑name>* – feel free to use, modify and share.  Please link back
-if you fork.
+* **New functions** – derive from `UnaryFunction`/`BinaryFunction`, register
+  the token in `CLexan.cpp`.
+* **Operator precedence** – currently evaluated left‑to‑right as stated in
+  zadani; adapt `CParser` if you want full precedence grammar.
+* **CSV import/export** – hook into `TableSaver` / `TableLoader` interfaces.
+* **Terminal colours** – tweak `src/Controller.cpp` prints (uses
+  `std::cout` only, no `ncurses` dependency).
+
+---
+
+## 6 License 
+
+Source code released under the **MIT License**.  
+Feel free to use, modify and share; please credit the original repo.
