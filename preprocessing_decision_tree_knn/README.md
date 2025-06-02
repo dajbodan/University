@@ -13,7 +13,7 @@ Both models share a **scikit‑learn `Pipeline`** that
 * standardises numeric columns,  
 * one‑hot encodes categorical columns.
 
-| Pipeline |
+| Models |
 |---------------------:|
 | **Decision Tree** |
 | **k‑NN** |
