@@ -4,7 +4,7 @@
 This notebook shows **end‑to‑end tabular‑data classification** with two
 classic algorithms:
 
-1. **Decision Tree** (CART) with depth / impurity hyper‑tuning  
+1. **Decision Tree** with depth / impurity hyper‑tuning  
 2. **k‑Nearest Neighbours** with distance weighting
 
 Both models share a **scikit‑learn `Pipeline`** that
