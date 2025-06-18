@@ -14,7 +14,7 @@
 #include <cstring>
 #include <memory>
 #define BUFFER_SIZE 10240
-#define TIMEOUT 100000 // FIX MEEEEEE PLSSSSS
+#define TIMEOUT 100000 
 
 using coordinates = std :: pair<int, int>;
 std :: unordered_map<int, std :: pair<int, int>> map_Authenzation
@@ -103,7 +103,7 @@ bool checkCorretnessMessage(std :: string & src, STATES  state = STATES :: UNKNO
         else
             return src.at(src.size() - 2) == '\a' && src.at(src.size() - 1) == '\b';
     }
-    return true; // FIX MEEEE
+    return true; 
 }
 
 int calcHashToClient(int key, int sumUsername )
@@ -339,7 +339,7 @@ bool acceptClient(int & clientSocket, int & serverSocket, struct sockaddr * vzda
     return true;
 }
 
-// should be there type of data what we receive ??
+
 std :: pair<DataReceive, std :: pair<int, int>> recieveData(int clientSocket, DataReceive expected)
 {
     char buffer[BUFFER_SIZE];
