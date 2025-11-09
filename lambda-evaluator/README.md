@@ -1,4 +1,4 @@
-# Vyhodnocovač lambda výrazů
+# lambda evaluator
 
 Features 
 1) evaluation according normal strategy        -> function normalEvaluation <br /> 
