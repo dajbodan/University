@@ -6,7 +6,7 @@ It supports normal-order and applicative-order evaluation, macro expansion,
 
 ---
 
-## ✨ Features
+##  Features
 
 - **Normal-order evaluation**  
 - **Applicative-order evaluation**  
@@ -20,7 +20,7 @@ Several example expressions are provided in `examples.txt`.
 
 ---
 
-## 🚀 Usage
+##  Usage
 
 ### Normal-order evaluation
 ```racket
@@ -46,7 +46,7 @@ Several example expressions are provided in `examples.txt`.
 
 ---
 
-## 📘 Examples (from `examples.txt`)
+## Examples (from `examples.txt`)
 
 ### Arithmetic
 ```racket
@@ -81,15 +81,6 @@ Several example expressions are provided in `examples.txt`.
 
 ---
 
-## 📄 Project Structure
-
-```
-semestralka.rkt     ; evaluator implementation
-examples.txt        ; sample expressions
-README.md           ; documentation
-```
-
----
 
 ## ✔ Notes
 
