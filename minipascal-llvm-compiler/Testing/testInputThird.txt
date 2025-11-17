@@ -1,0 +1,12 @@
+program third;
+
+var x : integer;
+
+begin
+    x := 5;
+    writeln( x ) ;
+    if ( x == 5) then begin
+        x := 10;
+    end
+    writeln( x );
+end.

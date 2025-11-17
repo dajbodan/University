@@ -1,0 +1,8 @@
+program increment; 
+
+var X : array [ 0 .. 20 ] of integer;
+
+begin 
+X[10] := 25 + 3;
+
+end.

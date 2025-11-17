@@ -1,0 +1,17 @@
+program inputOutput;
+
+var x : integer ;
+
+
+begin
+    x := 30;
+    writeln( x );
+    if( x != 5) then
+        x := 10;
+    end
+    else then
+        x := 20;
+    end
+
+
+end.

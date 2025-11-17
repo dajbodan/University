@@ -1,0 +1,22 @@
+program second;
+
+const x = $6;
+var i : integer;
+var j : integer;
+begin
+    i := 0;
+    j := 0;
+    while( i < x) do begin
+        i := i + 1;
+        while( j <= x ) do begin
+            if( j < x) then begin
+                writeln( j );
+            end
+            else then
+                writeln( 100 );
+            end
+            j := j + 1;
+         end
+         j := 0;
+    end
+end.
