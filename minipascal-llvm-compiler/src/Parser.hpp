@@ -43,12 +43,12 @@ public:
 private:
 
 
-    Lexer m_Lexer;                   // lexer is used to read tokens
-    int CurTok;                      // to keep the current token
+    Lexer m_Lexer;                   
+    int CurTok;                      
 
-    llvm::LLVMContext & MilaContext;   // llvm context
-    llvm::IRBuilder<> & MilaBuilder;   // llvm builder
-    llvm::Module & MilaModule;         // llvm module
+    llvm::LLVMContext & MilaContext;   
+    llvm::IRBuilder<> & MilaBuilder;   
+    llvm::Module & MilaModule;         
 
     std :: map<std :: string, Symbol> & m_table;
 
